@@ -1,4 +1,7 @@
--- Script para remover texturas de todos os objetos no jogo
+-- Script para remover texturas apenas dos objetos pertencentes ao jogador que está executando o script
+
+-- Obtém o jogador que está executando o script
+local player = game.Players.LocalPlayer
 
 -- Função para remover texturas de um objeto
 local function removeTextures(object)
@@ -17,5 +20,8 @@ local function removeTextures(object)
     end
 end
 
--- Inicia a remoção de texturas a partir do Workspace
-removeTextures(workspace)
+-- Verifica se o jogador tem um personagem
+if player and player.Character then
+    -- Inicia a remoção de texturas a partir do personagem do jogador
+    removeTextures(player.Character)
+end
